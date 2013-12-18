@@ -1,5 +1,5 @@
 
-<!-- saved from url=(0048)http://stg.dashboard.tabbedout.com/login/?next=/ -->
+<!-- saved from url=(0081)file:///Users/casey/Desktop/Working/Periscope/Login%20Page/Periscope%20Login.html -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>TabbedOut Periscope</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +9,10 @@
     <link href="http://stg.dashboard.tabbedout.com/static/css/periscope.css" rel="stylesheet" media="screen">
     <link href="http://stg.dashboard.tabbedout.com/static/css/daterangepicker-bs3.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="styling.css">
 
-    <script src="./Periscope Login_files/jquery.min.js"></script><script src="./Periscope Login_files/bootstrap.min.js"></script>
-    <script src="./Periscope Login_files/jquery-ui.js"></script>
+    <script src="./TabbedOut Periscope_files/jquery.min.js"></script><script src="./TabbedOut Periscope_files/bootstrap.min.js"></script>
+    <script src="./TabbedOut Periscope_files/jquery-ui.js"></script>
     
   <meta name="chromesniffer" id="chromesniffer_meta" content="{&quot;jQuery&quot;:&quot;1.10.2&quot;,&quot;jQuery UI&quot;:&quot;1.10.3&quot;}"><script type="text/javascript" src="chrome-extension://homgcnaoacgigpkkljjjekpignblkeae/detector.js"></script></head>
   <body class="periscope with-sidebar" style="" cz-shortcut-listen="true">
@@ -25,15 +26,19 @@
 <div class="row">
 
 		<div class="container">
-			<br>
+			<div class="row logoheader">
+				<div class="col-md-10 text-left">
+					<div class="periscopelogo"><img src="periscope.png" /></div>
+				</div>
+
+				<div class="col-md-2 text-right">
+					 <div class="tsquare"><a href="http://tabbedout.com"><img src="t-square-60px.png" /></a></div>
+				</div>
+			</div>
+
 			<div class="row">
 				<div class="span4 offset4 well">
 					<legend>Please Sign In</legend>
-
-					
-
-					
-
 					<form class="form-horizontal" name="LoginForm" action="http://stg.dashboard.tabbedout.com/login/" method="post">
 						<input type="hidden" name="csrfmiddlewaretoken" value="ABaLixeVo8b6ZRn0TNDG4GPhD25SgOiX">
 						
@@ -45,7 +50,7 @@
 						
 						<input type="password" id="password" class="form-control input-sm" name="password" placeholder="Password">
 						<label><input id="id_is_harbortouch" name="is_harbortouch" type="checkbox"> Log in via Harbortouch</label>
-						<button type="submit" name="submit" class="btn btn-info btn-block">Sign in</button>
+						<p class="submit"><button type="submit" name="submit" class="btn btn-info">Sign in</button></p>
 					</form>
 				</div>
 
