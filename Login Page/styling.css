@@ -19,18 +19,23 @@ body {
 .well {
 	padding: 1em;
 	margin: 2em 0;
-	background: rgba(0,0,0,0.4);
+	background: rgba(0,0,0,0.6);
 	border-radius: .5em 1.5em;
 	box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
 	border: 1px dashed rgba(255,255,255,0.3);
 }
 .logoheader {
-/*	overflow: hidden; */
 	background: rgba(255,255,255,0.1); 
-	border-radius: 0 0 .25em .25em;
+	border-radius: 0 0 .5em .5em;
 	padding: .5rem;
 	margin: 0 -1.5rem;
+	overflow: hidden; 
 }
+.logos div { 
+	display: inline-block;
+	vertical-align: middle;
+}
+.tsquare { float: right; }
 .periscopelogo > img { width: 225px; margin-left: -1rem; }
 input[type=text], input[type=email], input[type=password]  {
 	border-radius: .25em;
