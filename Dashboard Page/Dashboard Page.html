@@ -49,7 +49,7 @@
     display: none;
     padding: 0 5px;
     font-size: 14px;
-    font-family: 'Helvetica Neue', Helvetica, 'DroidSansRegular', Arial, sans-serif; 
+    font-family: Helvetica, 'DroidSansRegular', Arial, sans-serif; 
     font-weight: 200; 
     line-height: 1.4em;
     text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
@@ -97,7 +97,7 @@
 
   .sidebar,
   .sidebar .container {
-    background-color: rgba(0,150,185,0.8);
+    background-color: rgba(0,112,122,0.5);
     border-left: 3px solid rgba(0,0,0,0.5);
     color: #efefef;
   }
@@ -119,18 +119,8 @@
     margin: 5px 0;
     border-radius: 10px;
     box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.5);
   }
-
-  .feedback-sidebar .negative {
-    /*margin-top: -40px;*/
-    /*padding-top: 40px;*/
-    background-color: rgba(192, 46, 46, 0.3);
-  }
-
-  .feedback-sidebar .positive {
-    background-color: rgba(184, 243, 182, 0.2);
-  }
-
   .feedback-list {
     height: 100%;
     overflow-y: scroll;
@@ -155,10 +145,58 @@
   .feedback-list li:nth-child(odd) {
     background-color: rgba(0,0,0,0.1);
   }
+  .tronbadge {
+    font-size: 18px; 
+  }
+  .canvas { padding-left: 4px; }
+  .container {
+    background-color: rgba(0,112,122,0.2);
+    border-radius: 8px 45px;
+    overflow: hidden;
+    border-color: rgba(0,0,0,0.3);
+    border-top-color: rgba(255,255,255,0.1);
+    border-left-color: rgba(255,255,255,0.1);
+  }
+   .navbar {
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+  .panel-success > .panel-heading {
+    background-color: rgb(143,211,143); 
+  }
+  .percentstat { display: inline-block; }
+  .percentstat:first-child::after { content: '|'; color: rgba(0,0,0,0.15); }
+  .percentstat > .glyphicon { font-size: .75em; }
+  .percentstat.negative { color: rgb(233,103,103); }
+  .percentstat.positive { color: rgb(76,168,76); }
+  .percentstat a { color: inherit; }
+  .percentstat a:hover, .percentstat a:focus, .percentstat a:active { }
+
+  .panel.panel-widget-one { height: auto; }
+  @media (min-width: 768px) { 
+    .dl-horizontal dd { margin-left: 0; }
+    .dl-horizontal dt { width: 50%; }
+}
+
 /* This following is already defined in periscope.css */
   .negative h4 { color: rgb(233, 103, 103); }
   .positive h4 { color: rgb(143, 211, 143); }
+  .periscope dd {
+    font-size: 18px; 
+    font-family: 'DroidSansRegular', Helvetica, Arial, sans-serif;
+    text-align: right; 
+  }
+  .periscope dt { text-align: left; }
 
+/* Currently in layout.css */
+  .page-heading {
+    margin: 10px -16px 20px;
+    padding: 0;
+    background-color: rgba(0,0,0,0.2);
+    height: auto;
+    text-shadow: none;
+    border-bottom: none; 
+  }
+  
 </style>
 <div class="sidebar feedback-sidebar">
   <h3>
@@ -595,7 +633,7 @@
 
 
 
-	<nav class="navbar navbar-default" role="navigation">
+	<nav class="navbar" role="navigation">
 	  <!-- Brand and toggle get grouped for better mobile display -->
 	  <div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -664,7 +702,7 @@
 
 
 
-      <div class="container main">
+      <div class="panel container main">
         <div class="page-heading row">
           
             <div class="col-md-6">
@@ -680,76 +718,86 @@
         
           
 <div class="row">
-  <div class="col-md-4">
-    <a class="panel panel-default mini-tron-panel" href="http://stg.dashboard.tabbedout.com/venues/9/guests/">
-      <div class="panel-body text-center mini-tron">
-        <div class="row">
-          <div class="col-md-3 col-md-push-9">
-            <span class="badge">2308</span>
-          </div>
-        </div>
 
-        <h3>My Guests</h3>
+  <div class="col-sm-12 col-md-6 col-lg-4">
+    <div class="panel panel-widget-one panel-dark panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><a href="#">My Guests</a></h3>
+            <i class="icon-users"></i>
 
-        <dl class="dl-horizontal">
-          <dt>Average Check</dt>
-            <dd>$20.16</dd>
-          <dt>Average Tip</dt>
-            <dd>28.2%</dd>
-          <dt>Total Spend</dt>
-            <dd>$114,262</dd>
-        </dl>
+            <div class="label-wrapper">
+                <a href="#" class="btn btn-primary tronbadge">2308</a>
+            </div>
+        </div>
+        
+        <div class="panel-body">
+            <span class="text-main">
+                <dl class="dl-horizontal">
+                    <dt>Average Check</dt>
+                    <dd>$20.16</dd>
+                    <dt>Average Tip</dt>
+                    <dd>28.2%</dd>
+                    <dt>Total Spend</dt>
+                    <dd>$114,262</dd>
+                </dl>
+            </span>
 
-        <h4>Last 30 Days</h4>
-        <div class="col-md-6">
-          New: 26
+            <span class="text-secondary">
+                <h4>Last 30 Days</h4>
+                <div class="col-md-6">New: 26</div>
+                <div class="col-md-6">Total: 53</div>
+            </span>
         </div>
-        <div class="col-md-6">
-          Total: 53
-        </div>
-      </div>
-    </a>
+    </div>
   </div>
-  <div class="col-md-4">
-    <a href="http://stg.dashboard.tabbedout.com/venues/9/feedback/negative/" class="panel panel-default mini-tron-panel">
-      <div class="panel-body text-center mini-tron">
-        <div class="row">
-          <div class="col-md-3 col-md-push-9">
-            <span class="badge">64</span>
-          </div>
-        </div>
 
-        <h3>Feedback</h3>
-        <div class="row">
-          
-            <span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;45% |
-              54%&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>
-          
+  <div class="col-sm-12 col-md-6 col-lg-4">
+    <div class="panel panel-widget-one panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title"><a href="#">Feedback</a></h3>
+            <i class="icon-bubbles-3"></i>
+            <div class="label-wrapper">
+                <a href="#" class="btn btn-success tronbadge">64</a>
+            </div>
         </div>
-      </div>
-    </a>
+        
+        <div class="panel-body">
+            <span class="text-main">
+                <div class="percentstat negative">
+                    <span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;45%
+                </div>
+                <div class="percentstat positive">54%&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span></div>
+            </span>
+            <span class="text-secondary">all time</span>
+        </div>
+    </div>
   </div>
-  <div class="col-md-4">
-    <a href="http://stg.dashboard.tabbedout.com/venues/9/engagement/" class="panel panel-default mini-tron-panel">
-      <div class="panel-body text-center mini-tron">
-        <div class="row">
-          <div class="col-md-3 col-md-push-9">
-            <span class="badge">+$0</span>
-          </div>
-        </div>
 
-        <h3>Engagement</h3>
-        <div class="row">
-          <dl class="dl-horizontal">
-            <dt>Total Offers</dt><dd>0</dd>
-            <dt>Total Budget</dt><dd>$0</dd>
-            <dt>Offer Redemptions</dt><dd>0 ($0)</dd>
-            <dt>Generated Sales</dt><dd>$0
-          </dd></dl>
+  <div class="col-sm-12 col-md-6 col-lg-4">
+    <div class="panel panel-widget-one panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><a href="#">Engagement</a></h3>
+            <i class="icon-coin"></i>
+
+            <div class="label-wrapper">
+                <a href="#" class="btn btn-primary tronbadge">+ $0</a>
+            </div>
         </div>
-      </div>
-    </a>
+        
+        <div class="panel-body">
+            <span class="text-main">
+                <dl class="dl-horizontal">
+                    <dt>Total Offers</dt><dd>0</dd>
+                    <dt>Total Budget</dt><dd>$0</dd>
+                    <dt>Offer Redemptions</dt><dd>0 ($0)</dd>
+                    <dt>Generated Sales</dt><dd>$0</dd>
+                </dl>
+            </span>
+            <span class="text-secondary"></span>
+        </div>
+    </div>
   </div>
+
 </div>
 
         
