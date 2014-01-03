@@ -25,13 +25,35 @@
     });
   </script>
 
-  <meta name="chromesniffer" id="chromesniffer_meta" content="{&quot;jQuery&quot;:&quot;1.10.2&quot;,&quot;jQuery UI&quot;:&quot;1.10.3&quot;}"><script type="text/javascript" src="chrome-extension://homgcnaoacgigpkkljjjekpignblkeae/detector.js"></script></head>
+  <meta name="chromesniffer" id="chromesniffer_meta" content="{&quot;jQuery&quot;:&quot;1.10.2&quot;,&quot;jQuery UI&quot;:&quot;1.10.3&quot;}"><script type="text/javascript" src="chrome-extension://homgcnaoacgigpkkljjjekpignblkeae/detector.js"></script>
+
+  <script src="http://stg.dashboard.tabbedout.com/static/static/jqplot/jquery.jqplot.min.js"></script>
+  <script src="http://stg.dashboard.tabbedout.com/static/static/jqplot/plugins/jqplot.pieRenderer.min.js"></script>
+  <link rel="stylesheet" href="http://stg.dashboard.tabbedout.com/static/static/jqplot/jquery.jqplot.min.css">
+
+  <script>
+    $(document).ready(function () {
+
+    $.jqplot('chartdiv',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
+    
+    });
+  </script>
+
+  </head>
   <body class="periscope with-sidebar" style="" cz-shortcut-listen="true">
     
       
         <style type="text/css"> 
+  @import url(http://fonts.googleapis.com/css?family=Ubuntu+Condensed);
+
   body {
-    background: linear-gradient(
+    background: 
+        url('poweredbyto.png'), 
+        linear-gradient( rgba(0, 105, 119, 0.3), rgba(0, 43, 49, 0.75) ), 
+        url('wavegrid.png');
+    background-repeat: no-repeat, no-repeat, repeat;
+    background-position: bottom left;
+/*    background: linear-gradient(
       rgba(0, 0, 0, 0.8), 
       rgba(0, 0, 0, 0.4)
     ),
@@ -39,7 +61,8 @@
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover;*/
+
   }
   html, body {
     height: 100%;
@@ -49,7 +72,7 @@
     display: none;
     padding: 0 5px;
     font-size: 14px;
-    font-family: Helvetica, 'DroidSansRegular', Arial, sans-serif; 
+    font-family: 'Ubuntu Condensed', 'DroidSansRegular', Arial, sans-serif; 
     font-weight: 200; 
     line-height: 1.4em;
     text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
@@ -59,14 +82,49 @@
   .with-sidebar .sidebar {
     display: block;
     position: fixed;
-    top: 0;
+    top: 55px;
     right: 0;
     width: 300px;
-    height: 100%;
+    height: -webkit-calc(100% - 55px);
+    height: -moz-calc(100% - 55px);
+    height: calc(100% - 55px);
+    border-radius: 20px 0px 0px 20px;
   }
 
   .with-sidebar .canvas {
     margin-right: 300px;
+  }
+
+  .hide-sidebar {
+    position: absolute;
+    left: -24px;
+    top: 15px;
+    padding: 0 3px 2px 5px;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    background-color: rgba(0,0,0,0.7);
+    color: lightseagreen;
+    font-size: 35px;
+    line-height: 33px;
+  }
+
+  .show-sidebar {
+    display: none;
+    font-family: 'Ubuntu Condensed', 'DroidSansRegular', Arial, sans-serif;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    padding: 0 3px 2px 5px;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    background-color: rgba(0,0,0,0.7);
+    color: lightseagreen;
+    font-size: 35px;
+    line-height: 33px;
+  }
+
+  .without-sidebar .show-sidebar {
+    display: block; 
   }
 
   .sidebar h3,
@@ -75,10 +133,10 @@
 
   .sidebar h3 {
     font-size: 32px;
-    /*height: 40px;*/
     margin-bottom: -40px;
     margin-top: 0;
-    padding: 4px 0;
+    padding: 8px 8px 0;
+    text-align: right;
   }
 
   .sidebar h4 {
@@ -97,7 +155,8 @@
 
   .sidebar,
   .sidebar .container {
-    background-color: rgba(0,112,122,0.5);
+    /*background-color: rgba(0,112,122,0.5);*/
+    background-color: rgba(0, 56, 61, 0.5);
     border-left: 3px solid rgba(0,0,0,0.5);
     color: #efefef;
   }
@@ -115,10 +174,10 @@
     height: 50%;
     padding: 0 3px 40px;
     overflow: hidden;
-    border: 1px dashed rgba(255,200,200, 0.2);
+    border: 1px solid rgba(255,200,200, 0.2);
     margin: 5px 0;
     border-radius: 10px;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    box-shadow: none;
     background-color: rgba(0,0,0,0.5);
   }
   .feedback-list {
@@ -148,18 +207,25 @@
   .tronbadge {
     font-size: 18px; 
   }
-  .canvas { padding-left: 4px; }
   .container {
-    background-color: rgba(0,112,122,0.2);
-    border-radius: 8px 45px;
+    /*background-color: rgba(0,112,122,0.2);*/
+    background-color: rgba(0, 59, 60, 0.5);
+    border-radius: 8px 72px;
     overflow: hidden;
     border-color: rgba(0,0,0,0.3);
     border-top-color: rgba(255,255,255,0.1);
     border-left-color: rgba(255,255,255,0.1);
+    width: 98%;
   }
    .navbar {
     border-bottom: 1px solid rgba(255,255,255,0.2);
+    /*background-color: rgba(35,35,35,0.9);*/
+    background-color: rgba(255, 255, 255, 0.75);
+    width: 100vw;
+    margin-bottom: 25px; 
   }
+  .navbar-toggle { border-color: #ccc; }
+  .navbar-toggle .icon-bar { background-color: #ccc; }
   .panel-success > .panel-heading {
     background-color: rgb(143,211,143); 
   }
@@ -171,7 +237,7 @@
   .percentstat a { color: inherit; }
   .percentstat a:hover, .percentstat a:focus, .percentstat a:active { }
 
-  .panel.panel-widget-one { height: auto; }
+  .panel.panel-widget-one { min-height: 355px; }
   @media (min-width: 768px) { 
     .dl-horizontal dd { margin-left: 0; }
     .dl-horizontal dt { width: 50%; }
@@ -191,17 +257,20 @@
   .page-heading {
     margin: 10px -16px 20px;
     padding: 0;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.4);
     height: auto;
     text-shadow: none;
     border-bottom: none; 
   }
   
 </style>
+<div class="clickable show-sidebar">&laquo;</div>
+
 <div class="sidebar feedback-sidebar">
+  <div class="clickable hide-sidebar">&raquo;</div>
   <h3>
     Feedback
-    <small class="clickable hide-sidebar">Hide</small>
+    <!-- <small class="clickable hide-sidebar">Hide</small> -->
   </h3>
 
   <div class="feedback-container">
@@ -612,7 +681,11 @@
 </div>
 <script type="text/javascript">
   $(".hide-sidebar").click(function() {
-    $("body").removeClass("with-sidebar");
+    $("body").toggleClass("with-sidebar").toggleClass("without-sidebar");
+  });
+
+  $(".show-sidebar").click(function() {
+    $("body").toggleClass("without-sidebar").toggleClass("with-sidebar");
   });
 
   $(".reply-button").click(function(e) {
@@ -626,12 +699,6 @@
     
 
     <div class="canvas">
-      
-
-      
-
-
-
 
 	<nav class="navbar" role="navigation">
 	  <!-- Brand and toggle get grouped for better mobile display -->
@@ -649,18 +716,6 @@
 	  <div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav">
 			
-				<li class="">
-					<a href="http://stg.dashboard.tabbedout.com/">
-						<span class="glyphicon glyphicon-list"></span>&nbsp;All Venues
-					</a>
-				</li>
-			
-			
-				<li>
-					<a href="./Dashboard Page_files/Dashboard Page.html">
-						<span class="glyphicon glyphicon-tower"></span>&nbsp;Kung Fu
-					</a>
-				</li>
 				<li>
 					<a href="http://stg.dashboard.tabbedout.com/venues/9/guests/">
 						<span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;My Guests
@@ -769,6 +824,8 @@
                 <div class="percentstat positive">54%&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span></div>
             </span>
             <span class="text-secondary">all time</span>
+
+            <div id="chartdiv" style="height:150px;width:150px; "></div>
         </div>
     </div>
   </div>
@@ -803,7 +860,6 @@
         
       </div>
     </div>
-  
-  
 
+<script src="http://stg.dashboard.tabbedout.com/static/kuta-admin/plugins/chart-plugins.js"></script>
 </body></html>
