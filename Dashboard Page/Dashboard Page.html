@@ -4,38 +4,68 @@
     <title>Kung Fu | Kung Fu | TabbedOut Periscope</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="http://stg.dashboard.tabbedout.com/static/kuta-admin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="http://stg.dashboard.tabbedout.com/static/kuta-admin/css/styles.css" rel="stylesheet" media="screen">
-    <link href="http://stg.dashboard.tabbedout.com/static/css/periscope.css" rel="stylesheet" media="screen">
-    <link href="http://stg.dashboard.tabbedout.com/static/css/daterangepicker-bs3.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="./Dashboard Page_files/jquery-ui.css">
+    <link href="static/kuta-admin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="static/kuta-admin/css/styles.css" rel="stylesheet" media="screen">
+    <link href="static/css/periscope.css" rel="stylesheet" media="screen">
+    <link href="static/css/sidebar.css" rel="stylesheet" media="screen">
+    <link href="static/css/daterangepicker-bs3.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 
-    <script src="./Dashboard Page_files/jquery.min.js"></script><script src="./Dashboard Page_files/bootstrap.min.js"></script>
-    <script src="./Dashboard Page_files/jquery-ui.js"></script>
-    
-  <link rel="stylesheet" type="text/css" href="./Dashboard Page_files/jquery-ui.css">
-  <link rel="stylesheet" type="text/css" href="./Dashboard Page_files/ui.daterangepicker.css">
-  <script src="./Dashboard Page_files/jquery-ui.js"></script>
-  <script src="./Dashboard Page_files/date.js"></script>
-  <script src="./Dashboard Page_files/daterangepicker.jQuery.compressed.js"></script>
+    <script async="" src="analytics.js"></script><script src="jquery.min.js"></script><script src="bootstrap.min.js"></script>
+    <script src="jquery-ui.js"></script>
+    <script src="analytics(1).js"></script>
 
+  <!--[if lt IE 9]><script src="/static/jqplot/excanvas.js"></script><![endif]-->
+  <script src="jquery.jqplot.min.js"></script>
+  <script src="jqplot.pieRenderer.min.js"></script>
+  <link rel="stylesheet" href="static/jqplot/jquery.jqplot.min.css">
+  
   <script>
     $(document).ready(function () {
-      $('.date-range').daterangepicker();
-    });
-  </script>
+      $('#guests-minitron').on('click', makeLinkTracker('Guests', 'View Details', 'Minitron'));
+      $('#feedback-minitron').on('click', makeLinkTracker('Feedback', 'View Details', 'Minitron'));
+      $('#engagement-minitron').on('click', makeLinkTracker('Engagement', 'View Details', 'Minitron'));
 
-  <meta name="chromesniffer" id="chromesniffer_meta" content="{&quot;jQuery&quot;:&quot;1.10.2&quot;,&quot;jQuery UI&quot;:&quot;1.10.3&quot;}"><script type="text/javascript" src="chrome-extension://homgcnaoacgigpkkljjjekpignblkeae/detector.js"></script>
+      var feedback = {
+        allTime: [
+          ['Negative', 21],
+          ['Positive', 79]
+        ],
+        thirtyDays: [
+          ['Negative', 33],
+          ['Positive', 67]
+        ]
+      };
 
-  <script src="http://stg.dashboard.tabbedout.com/static/static/jqplot/jquery.jqplot.min.js"></script>
-  <script src="http://stg.dashboard.tabbedout.com/static/static/jqplot/plugins/jqplot.pieRenderer.min.js"></script>
-  <link rel="stylesheet" href="http://stg.dashboard.tabbedout.com/static/static/jqplot/jquery.jqplot.min.css">
+      var colors = ['#E96767', '#8FD38F'];
+      
+      //Made a few stylistic changes to the graph for the time being- more to come but can't get it working on this document...
+      //
+      //grid: changes include removing shadow, removing border and making BG transparent
+      //Defaults: removed shadow from actual pie graph itself
+      //
+      // It appears that the label within the graph itself can be styled in CSS but I will mess with that once I confirm that is the correct way to edit that color- if it needs editing. 
+      var allTimeFeedbackChart = jQuery.jqplot('feedback-chart-all-time', [feedback.allTime], {
+        seriesColors: colors,
+        seriesDefaults: {
+          renderer: jQuery.jqplot.PieRenderer,
+          rendererOptions: {showDataLabels: true},
+          shadow:false
+        },
+        grid:{
+            shadow:false, 
+            borderWidth:0, 
+            background:'transparent'
+        },
+      });
 
-  <script>
-    $(document).ready(function () {
-
-    $.jqplot('chartdiv',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
-    
+      var thirtyDaysFeedbackChart = jQuery.jqplot('feedback-chart-thirty-days', [feedback.thirtyDays], {
+        seriesColors: colors,
+        seriesDefaults: {
+          renderer: jQuery.jqplot.PieRenderer,
+          rendererOptions: {showDataLabels: true}
+        },
+      });
     });
   </script>
 
@@ -44,25 +74,22 @@
     
       
         <style type="text/css"> 
+
+        /* Added a font for feedback sidebar content (Ubuntu Condensed), and also added a font to make reading the H3s on the minitrons a bit easier (Alegreya Sans). */
+
   @import url(http://fonts.googleapis.com/css?family=Ubuntu+Condensed);
+  @import url(http://fonts.googleapis.com/css?family=Alegreya+Sans:100italic);
 
   body {
+    /*
+        New background style for page- periscope image removed. New background images in the following code are included in the repository. 
+    */
     background: 
         url('poweredbyto.png'), 
         linear-gradient( rgba(0, 105, 119, 0.3), rgba(0, 43, 49, 0.75) ), 
         url('wavegrid.png');
     background-repeat: no-repeat, no-repeat, repeat;
     background-position: bottom left;
-/*    background: linear-gradient(
-      rgba(0, 0, 0, 0.8), 
-      rgba(0, 0, 0, 0.4)
-    ),
-    url(http://tabbedout.staging.wpengine.com/periscope/sub2.png) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;*/
-
   }
   html, body {
     height: 100%;
@@ -79,16 +106,20 @@
   }
   p.actions { text-shadow: none; }
 
+/*
+    Sidebar modified to align with main container top edge. Border added to bottom for aesthetics. Height changed by 1% to allow for small gap near bottom of screen. 
+*/
   .with-sidebar .sidebar {
     display: block;
     position: fixed;
-    top: 55px;
+    top: 75px;
     right: 0;
     width: 300px;
     height: -webkit-calc(100% - 55px);
     height: -moz-calc(100% - 55px);
-    height: calc(100% - 55px);
+    height: calc(99% - 75px);
     border-radius: 20px 0px 0px 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
   }
 
   .with-sidebar .canvas {
@@ -200,7 +231,6 @@
     margin-right: 5px;
   }
 
-/* New CSS rule */
   .feedback-list li:nth-child(odd) {
     background-color: rgba(0,0,0,0.1);
   }
@@ -219,7 +249,6 @@
   }
    .navbar {
     border-bottom: 1px solid rgba(255,255,255,0.2);
-    /*background-color: rgba(35,35,35,0.9);*/
     background-color: rgba(255, 255, 255, 0.75);
     width: 100vw;
     margin-bottom: 25px; 
@@ -237,11 +266,30 @@
   .percentstat a { color: inherit; }
   .percentstat a:hover, .percentstat a:focus, .percentstat a:active { }
 
-  .panel.panel-widget-one { min-height: 355px; }
+  .panel.panel-widget-one { min-height: 390px; }
   @media (min-width: 768px) { 
     .dl-horizontal dd { margin-left: 0; }
     .dl-horizontal dt { width: 50%; }
 }
+/*
+    last30 rules are added for the Last 30 Days graphic that we are adding. Should allow for two styles to be displayed based on positive or negative trend. 
+
+    In JS when the trend is positive the following should happen...
+        Add the class .icon-arrow-up to the element ID #last30-arrow
+        Add the class .btn-success to the element ID #arrowbadge
+
+    When the trend is negative, instead add the following classes and remove the above...
+        .icon-arrow-down    ->  #last30-arrow
+        .btn-danger         ->  #arrowbadge
+*/
+  .last30-arrow {
+    font-size: 110px;
+    padding-top: 25px;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+  .last30-arrow .icon-arrow-up { color: #C1E9BA; }
+  .last30-arrow .icon-arrow-down { color: #E0CDCD; }
+  .arrowbadge { margin-top: -70px; font-size: 18px; }
 
 /* This following is already defined in periscope.css */
   .negative h4 { color: rgb(233, 103, 103); }
@@ -252,6 +300,9 @@
     text-align: right; 
   }
   .periscope dt { text-align: left; }
+  
+  /* This is new- helps align the content in the minitrons to look a little better. */
+  .mini-tron { text-align: center; }
 
 /* Currently in layout.css */
   .page-heading {
@@ -262,6 +313,15 @@
     text-shadow: none;
     border-bottom: none; 
   }
+
+/* In widgets.css */
+.panel.panel-widget-one > .panel-heading > .panel-title {
+    font-family: 'Alegreya Sans';
+    text-transform: uppercase;
+    font-weight: 100;
+    font-style: oblique;
+    background-color: rgba(0,0,0,0.65);
+}
   
 </style>
 <div class="clickable show-sidebar">&laquo;</div>
@@ -806,17 +866,73 @@
     </div>
   </div>
 
+  <!-- 
+        This pane should adjust its colors dynamically based on the data contained within. 
+        The feedback pane, currently, is the only pane that behaves this way.
+
+        When the All Time (or other) Feedback is more positive than negative, it should be green in palette and red when negative. To accomplish this, the #feedback-minitron (not present in this document but available in production version) and #feedback-badge (added in this commit, see :888) will toggle classes. 
+
+        Positive:
+            #feedback-minitron      ->      .panel-success
+            #feedback-badge         ->      .btn-success
+
+        Negative:
+            #feedback-minitron      ->      .panel-danger
+            #feedback-badge         ->      .btn-danger
+   -->
+
   <div class="col-sm-12 col-md-6 col-lg-4">
     <div class="panel panel-widget-one panel-success">
         <div class="panel-heading">
             <h3 class="panel-title"><a href="#">Feedback</a></h3>
             <i class="icon-bubbles-3"></i>
             <div class="label-wrapper">
-                <a href="#" class="btn btn-success tronbadge">64</a>
+                 <!-- ID #feedback-badge added to this element to make styling based on content easier. See :867 for more details.  -->
+                 <span id="feedback-badge" class="btn btn-success tronbadge">19</span>
             </div>
         </div>
+
+      <div class="panel-body mini-tron">
+      
+      <!-- 
         
-        <div class="panel-body">
+        Inline style added to the following element- either add this inline as I have done or class/ID it and style it that way, either way will work. Provides a nice vertical divider between Overall Feedback & Last 30 Days. 
+
+        -->
+        <div class="col-xs-6" style="border-right: 1px solid #ccc;">
+          <h3>All Time</h3>
+
+          <!-- 
+                If at all possible, I'd like to see the graph be just a bit larger and use up more of its container. 
+           -->
+            <div id="feedback-chart-all-time" class="feedback-chart jqplot-target" style="position: relative;"><canvas width="132" height="150" class="jqplot-base-canvas" style="position: absolute; left: 0px; top: 0px;"></canvas><div class="jqplot-title" style="height: 0px; width: 0px;"></div><canvas width="132" height="150" class="jqplot-grid-canvas" style="position: absolute; left: 0px; top: 0px;"></canvas><canvas width="112" height="117" class="jqplot-series-shadowCanvas" style="position: absolute; left: 10px; top: 10px;"></canvas><canvas width="112" height="117" class="jqplot-series-canvas" style="position: absolute; left: 10px; top: 10px;"></canvas><canvas width="112" height="117" class="jqplot-pieRenderer-highlight-canvas" style="position: absolute; left: 10px; top: 10px;"></canvas><div class="jqplot-pie-series jqplot-data-label" style="position: absolute; left: 71px; top: 71px;">21%</div><div class="jqplot-pie-series jqplot-data-label" style="position: absolute; left: 39px; top: 46px;">79%</div><canvas width="112" height="117" class="jqplot-event-canvas" style="position: absolute; left: 10px; top: 10px;"></canvas></div>
+            <div class="percentstat negative">
+              <span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;21%
+            </div>
+            <div class="percentstat positive">
+              79%&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>
+            </div>
+
+        </div>
+        <div class="col-xs-6">
+          <h3>Last 30 Days</h3>
+
+          <!-- 
+                Similar to the Feedback pane as a whole, the following elements will adjust accordingly based on the data they are given. 
+
+                See :272 for details. 
+           -->
+            <div class="last30-arrow">
+                <i id="last30-arrow" class="icon-arrow-up"></i>
+            </div>
+            <div class="arrowbadge">
+                <span id="arrowbadge" class="btn btn-circle btn-success">+23%</span>
+            </div>
+
+        </div>
+      </div>
+
+        <!-- <div class="panel-body">
             <span class="text-main">
                 <div class="percentstat negative">
                     <span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;45%
@@ -824,9 +940,7 @@
                 <div class="percentstat positive">54%&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span></div>
             </span>
             <span class="text-secondary">all time</span>
-
-            <div id="chartdiv" style="height:150px;width:150px; "></div>
-        </div>
+        </div> -->
     </div>
   </div>
 
