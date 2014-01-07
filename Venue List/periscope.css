@@ -185,6 +185,12 @@ th.timestamp {
     height: auto; 
     min-height: 390px; 
 }
+.panel.panel-widget-one > .panel-heading > .panel-title {
+    font-family: 'Alegreya Sans', sans-serif;
+    font-weight: 100;
+    font-style: oblique;
+    text-transform: uppercase;
+}
 
 @media (min-width: 768px) { 
     .dl-horizontal dd { margin-left: 0; }
