@@ -6,8 +6,8 @@
 
     <link href="http://stg.dashboard.tabbedout.com/static/kuta-admin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="http://stg.dashboard.tabbedout.com/static/kuta-admin/css/styles.css" rel="stylesheet" media="screen">
-    <link href="http://stg.dashboard.tabbedout.com/static/css/periscope.css" rel="stylesheet" media="screen">
-    <link href="http://stg.dashboard.tabbedout.com/static/css/sidebar.css" rel="stylesheet" media="screen">
+    <link href="../Venue List/periscope.css" rel="stylesheet" media="screen">
+    <link href="sidebar.css" rel="stylesheet" media="screen">
     <link href="http://stg.dashboard.tabbedout.com/static/css/daterangepicker-bs3.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 
@@ -71,255 +71,8 @@
 
   </head>
   <body class="periscope with-sidebar" style="" cz-shortcut-listen="true">
-    
-      
-        <style type="text/css"> 
 
-        /* Added a font for feedback sidebar content (Ubuntu Condensed), and also added a font to make reading the H3s on the minitrons a bit easier (Alegreya Sans). */
 
-  @import url(http://fonts.googleapis.com/css?family=Ubuntu+Condensed);
-  @import url(http://fonts.googleapis.com/css?family=Alegreya+Sans:100italic);
-
-  body {
-    /*
-        New background style for page- periscope image removed. New background images in the following code are included in the repository. 
-    */
-    background: 
-        url('poweredbyto.png'), 
-        linear-gradient( rgba(0, 105, 119, 0.3), rgba(0, 43, 49, 0.75) ), 
-        url('wavegrid.png');
-    background-repeat: no-repeat, no-repeat, repeat;
-    background-position: bottom left;
-  }
-  html, body {
-    height: 100%;
-  }
-
-  .sidebar {
-    display: none;
-    padding: 0 5px;
-    font-size: 14px;
-    font-family: 'Ubuntu Condensed', 'DroidSansRegular', Arial, sans-serif; 
-    font-weight: 200; 
-    line-height: 1.4em;
-    text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
-  }
-  p.actions { text-shadow: none; }
-
-/*
-    Sidebar modified to align with main container top edge. Border added to bottom for aesthetics. Height changed by 1% to allow for small gap near bottom of screen. 
-*/
-  .with-sidebar .sidebar {
-    display: block;
-    position: fixed;
-    top: 75px;
-    right: 0;
-    width: 300px;
-    height: -webkit-calc(100% - 55px);
-    height: -moz-calc(100% - 55px);
-    height: calc(99% - 75px);
-    border-radius: 20px 0px 0px 20px;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-  }
-
-  .with-sidebar .canvas {
-    margin-right: 300px;
-  }
-
-  .hide-sidebar {
-    position: absolute;
-    left: -24px;
-    top: 15px;
-    padding: 0 3px 2px 5px;
-    border-top-left-radius: 100px;
-    border-bottom-left-radius: 100px;
-    background-color: rgba(0,0,0,0.7);
-    color: lightseagreen;
-    font-size: 35px;
-    line-height: 33px;
-  }
-
-  .show-sidebar {
-    display: none;
-    font-family: 'Ubuntu Condensed', 'DroidSansRegular', Arial, sans-serif;
-    position: absolute;
-    top: 80px;
-    right: 0;
-    padding: 0 3px 2px 5px;
-    border-top-left-radius: 100px;
-    border-bottom-left-radius: 100px;
-    background-color: rgba(0,0,0,0.7);
-    color: lightseagreen;
-    font-size: 35px;
-    line-height: 33px;
-  }
-
-  .without-sidebar .show-sidebar {
-    display: block; 
-  }
-
-  .sidebar h3 {
-    font-size: 32px;
-    margin-bottom: -40px;
-    margin-top: 0;
-    padding: 8px 8px 0;
-    text-align: right;
-  }
-
-  .sidebar h4 {
-    font-size: 24px;
-    height: 35px;
-    margin-top: 2px;
-    padding: 0 5px;
-    border-bottom: 1px solid;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-  }
-
-  .sidebar h4 .glyphicon {
-    margin-left: 5px;
-  }
-
-  .sidebar,
-  .sidebar .container {
-    background-color: rgba(0, 56, 61, 0.5);
-    border-left: 3px solid rgba(0,0,0,0.5);
-    color: #efefef;
-  }
-
-  .feedback-container {
-    height: 100%;
-    padding-top: 40px;
-    padding-bottom: 20px; 
-    margin-bottom: -40px;
-  }
-
-  .feedback-sidebar .positive,
-  .feedback-sidebar .negative {
-    /*margin-top: 20px;*/
-    height: 50%;
-    padding: 0 3px 40px;
-    overflow: hidden;
-    border: 1px solid rgba(255,200,200, 0.2);
-    margin: 5px 0;
-    border-radius: 10px;
-    box-shadow: none;
-    background-color: rgba(0,0,0,0.5);
-  }
-
-  .feedback-list {
-    height: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding-left: 0;
-  }
-
-  .feedback-list li {
-    list-style: none;
-  }
-
-  .feedback-sidebar .details {
-    padding: 10px;
-  }
-
-  .feedback-sidebar .timestamp {
-    margin-right: 5px;
-  }
-
-  .feedback-list li:nth-child(odd) {
-    background-color: rgba(0,0,0,0.1);
-  }
-  .tronbadge {
-    font-size: 18px; 
-  }
-  .container {
-    background-color: rgba(0, 59, 60, 0.5);
-    border-radius: 8px 72px;
-    overflow: hidden;
-    border-color: rgba(0,0,0,0.3);
-    border-top-color: rgba(255,255,255,0.1);
-    border-left-color: rgba(255,255,255,0.1);
-    width: 98%;
-  }
-
-   .navbar {
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    background-color: rgba(255, 255, 255, 0.75);
-    width: 100vw;
-    margin-bottom: 25px; 
-  }
-
-  .navbar-toggle { border-color: #ccc; }
-  .navbar-toggle .icon-bar { background-color: #ccc; }
-  .panel-success > .panel-heading {
-    background-color: rgb(143,211,143); 
-  }
-  
-  .percentstat { display: inline-block; }
-  .percentstat:first-child::after { content: '|'; color: rgba(0,0,0,0.15); }
-  .percentstat > .glyphicon { font-size: .75em; }
-  .percentstat.negative { color: rgb(233,103,103); }
-  .percentstat.positive { color: rgb(76,168,76); }
-  .percentstat a { color: inherit; }
-  .percentstat a:hover, .percentstat a:focus, .percentstat a:active { }
-
-  .panel.panel-widget-one { min-height: 390px; }
-  @media (min-width: 768px) { 
-    .dl-horizontal dd { margin-left: 0; }
-    .dl-horizontal dt { width: 50%; }
-}
-/*
-    last30 rules are added for the Last 30 Days graphic that we are adding. Should allow for two styles to be displayed based on positive or negative trend. 
-
-    In JS when the trend is positive the following should happen...
-        Add the class .icon-arrow-up to the element ID #last30-arrow
-        Add the class .btn-success to the element ID #arrowbadge
-
-    When the trend is negative, instead add the following classes and remove the above...
-        .icon-arrow-down    ->  #last30-arrow
-        .btn-danger         ->  #arrowbadge
-*/
-  .last30-arrow {
-    font-size: 110px;
-    padding-top: 25px;
-    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
-}
-  .last30-arrow .icon-arrow-up { color: #C1E9BA; }
-  .last30-arrow .icon-arrow-down { color: #E0CDCD; }
-  .arrowbadge { margin-top: -70px; font-size: 18px; }
-
-/* This following is already defined in periscope.css */
-  .negative h4 { color: rgb(233, 103, 103); }
-  .positive h4 { color: rgb(143, 211, 143); }
-  .periscope dd {
-    font-size: 18px; 
-    font-family: 'DroidSansRegular', Helvetica, Arial, sans-serif;
-    text-align: right; 
-  }
-  .periscope dt { text-align: left; }
-  
-  /* This is new- helps align the content in the minitrons to look a little better. */
-  .mini-tron { text-align: center; }
-
-/* Currently in layout.css */
-  .page-heading {
-    margin: 10px -16px 20px;
-    padding: 0;
-    background-color: rgba(0,0,0,0.4);
-    height: auto;
-    text-shadow: none;
-    border-bottom: none; 
-  }
-
-/* In widgets.css */
-.panel.panel-widget-one > .panel-heading > .panel-title {
-    font-family: 'Alegreya Sans';
-    text-transform: uppercase;
-    font-weight: 100;
-    font-style: oblique;
-    background-color: rgba(0,0,0,0.65);
-}
-  
-</style>
 <div class="clickable show-sidebar">&laquo;</div>
 
 <div class="sidebar feedback-sidebar">
@@ -889,42 +642,44 @@
         </div>
 
       <div class="panel-body mini-tron">
-      
       <!-- 
-        
         Inline style added to the following element- either add this inline as I have done or class/ID it and style it that way, either way will work. Provides a nice vertical divider between Overall Feedback & Last 30 Days. 
-
         -->
-        <div class="col-xs-6" style="border-right: 1px solid #ccc;">
-          <h3>All Time</h3>
+        <div class="row">
+          <div class="col-xs-6" style="border-right: 1px solid #ccc;">
+            <h3>All Time</h3>
+            <!-- 
+                  If at all possible, I'd like to see the graph be just a bit larger and use up more of its container. 
+             -->
+              <div id="feedback-chart-all-time" class="feedback-chart jqplot-target" style="position: relative;"><canvas width="132" height="150" class="jqplot-base-canvas" style="position: absolute; left: 0px; top: 0px;"></canvas><div class="jqplot-title" style="height: 0px; width: 0px;"></div><canvas width="132" height="150" class="jqplot-grid-canvas" style="position: absolute; left: 0px; top: 0px;"></canvas><canvas width="112" height="117" class="jqplot-series-shadowCanvas" style="position: absolute; left: 10px; top: 10px;"></canvas><canvas width="112" height="117" class="jqplot-series-canvas" style="position: absolute; left: 10px; top: 10px;"></canvas><canvas width="112" height="117" class="jqplot-pieRenderer-highlight-canvas" style="position: absolute; left: 10px; top: 10px;"></canvas><div class="jqplot-pie-series jqplot-data-label" style="position: absolute; left: 71px; top: 71px;">21%</div><div class="jqplot-pie-series jqplot-data-label" style="position: absolute; left: 39px; top: 46px;">79%</div><canvas width="112" height="117" class="jqplot-event-canvas" style="position: absolute; left: 10px; top: 10px;"></canvas></div>
+              <div class="percentstat negative">
+                <span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;21%
+              </div>
+              <div class="percentstat positive">
+                79%&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>
+              </div>
 
-          <!-- 
-                If at all possible, I'd like to see the graph be just a bit larger and use up more of its container. 
-           -->
-            <div id="feedback-chart-all-time" class="feedback-chart jqplot-target" style="position: relative;"><canvas width="132" height="150" class="jqplot-base-canvas" style="position: absolute; left: 0px; top: 0px;"></canvas><div class="jqplot-title" style="height: 0px; width: 0px;"></div><canvas width="132" height="150" class="jqplot-grid-canvas" style="position: absolute; left: 0px; top: 0px;"></canvas><canvas width="112" height="117" class="jqplot-series-shadowCanvas" style="position: absolute; left: 10px; top: 10px;"></canvas><canvas width="112" height="117" class="jqplot-series-canvas" style="position: absolute; left: 10px; top: 10px;"></canvas><canvas width="112" height="117" class="jqplot-pieRenderer-highlight-canvas" style="position: absolute; left: 10px; top: 10px;"></canvas><div class="jqplot-pie-series jqplot-data-label" style="position: absolute; left: 71px; top: 71px;">21%</div><div class="jqplot-pie-series jqplot-data-label" style="position: absolute; left: 39px; top: 46px;">79%</div><canvas width="112" height="117" class="jqplot-event-canvas" style="position: absolute; left: 10px; top: 10px;"></canvas></div>
-            <div class="percentstat negative">
-              <span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;21%
-            </div>
-            <div class="percentstat positive">
-              79%&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>
-            </div>
+          </div>
+          <div class="col-xs-6">
+            <h3>Last 30 Days</h3>
+            <!-- 
+                  Similar to the Feedback pane as a whole, the following elements will adjust accordingly based on the data they are given. 
 
+                  See :272 for details. 
+             -->
+              <div class="last30-arrow">
+                  <i id="last30-arrow" class="icon-arrow-up"></i>
+              
+              </div>
+              <div class="arrowbadge">
+                  <span id="arrowbadge" class="btn btn-circle btn-success">+23%</span>
+              </div>
+
+          </div>
         </div>
-        <div class="col-xs-6">
-          <h3>Last 30 Days</h3>
 
-          <!-- 
-                Similar to the Feedback pane as a whole, the following elements will adjust accordingly based on the data they are given. 
-
-                See :272 for details. 
-           -->
-            <div class="last30-arrow">
-                <i id="last30-arrow" class="icon-arrow-up"></i>
-            </div>
-            <div class="arrowbadge">
-                <span id="arrowbadge" class="btn btn-circle btn-success">+23%</span>
-            </div>
-
+        <div class="awaiting-reply row col-xs-12">
+          Negative Feedback Awaiting Reply: <a href="#">23</a>
         </div>
       </div>
 
