@@ -1,3 +1,19 @@
+@import url(http://fonts.googleapis.com/css?family=Alegreya+Sans:100italic);
+
+body {
+    background: 
+        url('poweredbyto.png'), 
+        linear-gradient( rgba(0, 105, 119, 0.3), rgba(0, 43, 49, 0.75) ), 
+        url('wavegrid.png');
+    background-repeat: no-repeat, no-repeat, repeat;
+    background-position: bottom left;
+    background-attachment: fixed;
+}
+
+html, body { 
+    height: 100%; 
+}
+
 div.page-heading > div.text-right {
     padding-right: 2px;
 }
@@ -29,7 +45,7 @@ body, .main {
     min-height: 76px;
 }
 
-    .page-heading > div.col-md-3 {
+.page-heading > div.col-md-3 {
         padding-left: 0px;
     }
 
@@ -46,6 +62,7 @@ body, .main {
 .mini-tron {
     color: #333;
     min-height: 200px;
+    text-align: center;
 }
 
 .form-control[readonly].false-readonly, tr.hover {
@@ -81,11 +98,15 @@ th.timestamp {
 
 .periscope dt {
     margin-top: 0;
+    text-align: left;
 }
 
 .periscope dd {
     margin-top: 0;
     padding: 5px;
+    font-size: 18px;
+    font-family: 'DroidSansRegular', Helvetica, Arial, sans-serif;
+    text-align: right;
 }
 
 .positive h1,
@@ -93,7 +114,7 @@ th.timestamp {
 .positive h3,
 .positive h4,
 .positive h5 {
-    color: green;
+    color: rgb(143, 211, 143);
 }
 
 .negative h1,
@@ -101,7 +122,7 @@ th.timestamp {
 .negative h3,
 .negative h4,
 .negative h5 {
-    color: red;
+    color: rgb(233, 103, 103);
 }
 
 .clickable {
@@ -112,151 +133,6 @@ th.timestamp {
 
 .feedback-chart {
     height: 150px;
-}
-
-/* Mockup Styles */
-  body {
-    background: 
-        url('poweredbyto.png'), 
-        linear-gradient( rgba(0, 105, 119, 0.3), rgba(0, 43, 49, 0.75) ), 
-        url('wavegrid.png');
-    background-repeat: no-repeat, no-repeat, repeat;
-    background-position: bottom left;
-    background-attachment: fixed;
-  }
-  html, body {
-    height: 100%;
-  }
-
-.sidebar {
-    display: none;
-    padding: 0 5px;
-    font-size: 14px;
-    font-family: Helvetica, 'DroidSansRegular', Arial, sans-serif;
-    font-weight: 200;
-    line-height: 1.4em;
-    text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
-}
-
-p.actions { text-shadow: none; }
-
-  .with-sidebar .sidebar {
-    display: block;
-    position: fixed;
-    top: 75px;
-    right: 0;
-    width: 300px;
-    height: -webkit-calc(100% - 55px);
-    height: -moz-calc(100% - 55px);
-    height: calc(99% - 75px);
-    border-radius: 20px 0px 0px 20px;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-  }
-
-.with-sidebar .canvas {
-    margin-right: 300px;
-}
-
-.hide-sidebar {
-    position: absolute;
-    left: -24px;
-    top: 15px;
-    padding: 0 3px 2px 5px;
-    border-top-left-radius: 100px;
-    border-bottom-left-radius: 100px;
-    background-color: rgba(0,0,0,0.7);
-    color: lightseagreen;
-    font-size: 35px;
-    line-height: 33px;
-}
-
-.show-sidebar {
-    display: none;
-    font-family: 'Ubuntu Condensed', 'DroidSansRegular', Arial, sans-serif;
-    position: absolute;
-    top: 80px;
-    right: 0;
-    padding: 0 3px 2px 5px;
-    border-top-left-radius: 100px;
-    border-bottom-left-radius: 100px;
-    background-color: rgba(0,0,0,0.7);
-    color: lightseagreen;
-    font-size: 35px;
-    line-height: 33px;
-}
-
-.without-sidebar .show-sidebar {
-    display: block; 
-}
-
-.sidebar h3 {
-    font-size: 32px;
-    margin-bottom: -40px;
-    margin-top: 0;
-    padding: 8px 8px 0;
-    text-align: right;
-  }
-
-.sidebar h4 {
-    font-size: 24px;
-    height: 35px;
-    margin-top: 2px;
-    padding: 0 5px;
-    border-bottom: 1px solid;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-  }
-
-.sidebar h4 .glyphicon {
-    margin-left: 5px;
-}
-
-.sidebar,
-.sidebar .container {
-    background-color: rgba(0, 56, 61, 0.5);
-    border-left: 3px solid rgba(0,0,0,0.5);
-    color: #efefef;
-  }
-
-.feedback-container {
-    height: 100%;
-    padding-top: 40px;
-    padding-bottom: 20px;
-    margin-bottom: -40px;
-}
-
-.feedback-sidebar .positive,
-.feedback-sidebar .negative {
-    height: 50%;
-    padding: 0 3px 40px;
-    overflow: hidden;
-    border: 1px solid rgba(255,200,200, 0.2);
-    margin: 5px 0;
-    border-radius: 10px;
-    box-shadow: none;
-    background-color: rgba(0,0,0,0.5);
-  }
-
-.feedback-list {
-    height: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding-left: 0;
-}
-
-.feedback-list li {
-    list-style: none;
-}
-
-.feedback-sidebar .details {
-    padding: 10px;
-}
-
-.feedback-sidebar .timestamp {
-    margin-right: 5px;
-}
-
-.feedback-list li:nth-child(odd) {
-    background-color: rgba(0,0,0,0.1);
 }
 
 .tronbadge { 
@@ -289,11 +165,15 @@ p.actions { text-shadow: none; }
 
 .navbar-toggle { border-color: #ccc; }
 .navbar-toggle .icon-bar { background-color: #ccc; }
+
 .panel-success > .panel-heading {
     background-color: rgb(143,211,143); 
 }
   
-.percentstat { display: inline-block; }
+.percentstat { 
+    display: inline-block; 
+    font-size: 20px; 
+}
 .percentstat:first-child::after { content: '|'; color: rgba(0,0,0,0.15); }
 .percentstat > .glyphicon { font-size: .75em; }
 .percentstat.negative { color: rgb(233,103,103); }
@@ -301,7 +181,10 @@ p.actions { text-shadow: none; }
 .percentstat a { color: inherit; }
 .percentstat a:hover, .percentstat a:focus, .percentstat a:active { }
 
-.panel.panel-widget-one { min-height: 390px; }
+.panel.panel-widget-one { 
+    height: auto; 
+    min-height: 390px; 
+}
 
 @media (min-width: 768px) { 
     .dl-horizontal dd { margin-left: 0; }
@@ -317,16 +200,6 @@ p.actions { text-shadow: none; }
 .last30-arrow .icon-arrow-down { color: #E0CDCD; }
 .arrowbadge { margin-top: -70px; font-size: 18px; }
 
-/* This following is already defined in periscope.css */
-.negative h4 { color: rgb(233, 103, 103); }
-.positive h4 { color: rgb(143, 211, 143); }
-.periscope dd {
-  font-size: 18px;
-  font-family: 'DroidSansRegular', Helvetica, Arial, sans-serif;
-  text-align: right;
-}
-.periscope dt { text-align: left; }
-
 .table { background-color: rgba(255,255,255,0.8); }
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th { background-color: beige; }
 
@@ -338,6 +211,12 @@ p.actions { text-shadow: none; }
     height: auto;
     text-shadow: none;
     border-bottom: none; 
+}
+
+.awaiting-reply {
+    font-family: 'BebasNeueRegular';
+    font-size: 23px;
+    padding: 20px 0 0;
 }
 
 /* Login Page */
@@ -373,6 +252,7 @@ body.standalone .well {
 }
 .tsquare { float: right; }
 .periscopelogo > img { width: 225px; margin-left: -1rem; }
+
 body.standalone input[type=text], body.standalone input[type=email], body.standalone input[type=password]  {
     border-radius: .25em;
     color: #00a0af;
