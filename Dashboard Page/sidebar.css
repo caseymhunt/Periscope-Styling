@@ -162,6 +162,7 @@ p.actions { text-shadow: none; }
   .big-tool {
     display: block !important;
     width: auto;
+    margin-top:55px; 
   }
 
   .sidebar {
@@ -174,6 +175,9 @@ p.actions { text-shadow: none; }
 
   .page-heading {
     margin: -11px -15px 10px -15px;
+  }
+  .container {
+    margin-top: 10px; 
   }
 
 }
