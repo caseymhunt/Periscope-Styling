@@ -33,10 +33,6 @@ body, .main {
     padding-bottom: 20px;
 }
 
-.container {
-    background-color: #efefef;
-}
-
 .page-heading {
     height: auto;
     min-height: 76px;
@@ -142,7 +138,7 @@ th.timestamp {
 
 .container {
     background-color: rgba(0, 59, 60, 0.5);
-    border-radius: 8px 72px;
+    border-radius: 10px 72px 10px 10px;
     overflow: hidden;
     border-color: rgba(0,0,0,0.3);
     border-top-color: rgba(255,255,255,0.1);
