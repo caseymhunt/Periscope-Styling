@@ -172,7 +172,7 @@ th.timestamp {
   
 .percentstat { 
     display: inline-block; 
-    font-size: 20px; 
+    font-size: 16px; 
 }
 .percentstat:first-child::after { content: '|'; color: rgba(0,0,0,0.15); }
 .percentstat > .glyphicon { font-size: .75em; }
@@ -221,8 +221,9 @@ th.timestamp {
 
 .awaiting-reply {
     font-family: 'BebasNeueRegular';
-    font-size: 23px;
+    font-size: 19px;
     padding: 20px 0 0;
+    margin: 0;
 }
 
 /* Login Page */
